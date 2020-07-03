@@ -21,16 +21,18 @@ public class TaskController {
     public TaskController(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }
-
+    
+    @GetMapping
+    public List<Task> getTasks() {
+        return taskRepository.findAll();
+    }
+    
     @PostMapping
     public void addTask(@RequestBody Task task) {
         taskRepository.save(task);
     }
 
-    @GetMapping
-    public List<Task> getTasks() {
-        return taskRepository.findAll();
-    }
+
 
     @PutMapping("/{id}")
     public void editTask(@PathVariable long id, @RequestBody Task task) {
