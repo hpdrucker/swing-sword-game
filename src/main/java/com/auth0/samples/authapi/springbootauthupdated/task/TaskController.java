@@ -1,5 +1,8 @@
 package com.auth0.samples.authapi.springbootauthupdated.task;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,23 +13,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
+/**
+ * RestController für 
+ * @author luigicavuoti
+ * @date 10.07.2020
+ *
+ */
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
 
+	@Autowired
     private TaskRepository taskRepository;
 
     public TaskController(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }
     
+    /**
+     * 
+     * @return
+     */
     @GetMapping
     public List<Task> getTasks() {
-        return taskRepository.findAll();
+        return taskRepository.findAll();  //taskRepository.findAll();
     }
     
+    /**
+     * adds a new task to the list - or db
+     * @param task
+     */
     @PostMapping
     public void addTask(@RequestBody Task task) {
         taskRepository.save(task);
