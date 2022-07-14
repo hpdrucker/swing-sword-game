@@ -1,7 +1,8 @@
-package com.auth0.samples.authapi.springbootauthupdated;
+package ch.clip.samples.authapi;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 // https://auth0.com/blog/implementing-jwt-authentication-on-spring-boot/
 import org.springframework.boot.SpringApplication;
@@ -9,17 +10,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.auth0.samples.authapi.springbootauthupdated.task.Task;
-import com.auth0.samples.authapi.springbootauthupdated.task.TaskRepository;
-import com.auth0.samples.authapi.springbootauthupdated.user.ApplicationUser;
-import com.auth0.samples.authapi.springbootauthupdated.user.ApplicationUserRepository;
+import ch.clip.samples.authapi.service.TaskUserService;
+import ch.clip.samples.authapi.task.Task;
+import ch.clip.samples.authapi.task.TaskRepository;
+import ch.clip.samples.authapi.user.AppUser;
+import ch.clip.samples.authapi.user.AppUserRepository;
 
 // https://auth0.com/blog/implementing-jwt-authentication-on-spring-boot/
-
+// https://github.com/auth0/java-jwt
 @SpringBootApplication
 public class SpringbootAuthUpdatedApplication {
 	private static final Logger log = LoggerFactory.getLogger(SpringbootAuthUpdatedApplication.class);
 
+	@Autowired
+	private TaskUserService taskUserService;
+	
 	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder() {
 		return new BCryptPasswordEncoder();
@@ -30,7 +35,7 @@ public class SpringbootAuthUpdatedApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(TaskRepository repository, ApplicationUserRepository userRepository) {
+	public CommandLineRunner demo(TaskRepository repository, AppUserRepository userRepository) {
 		return (args) -> {
 			// save a couple of tasks
 			Task t1 = new Task("Dinner with my Family");
@@ -60,9 +65,10 @@ public class SpringbootAuthUpdatedApplication {
 			log.info("tasks");
 
 			// save a couple of users
-			ApplicationUser u1 = new ApplicationUser("user", "123");
-			ApplicationUser u2 = new ApplicationUser("user1", "123");
-			ApplicationUser u3 = new ApplicationUser("user2", "123");
+			AppUser u1 = new AppUser("user", "123");
+			AppUser u2 = new AppUser("user1", "123");
+			AppUser u3 = new AppUser("user2", "123");
+			AppUser u4 = new AppUser("user4-service", "123");
 
 			
 			u1.setTask(t1);
@@ -72,10 +78,13 @@ public class SpringbootAuthUpdatedApplication {
 			userRepository.save(u2);
 			userRepository.save(u3);
 
+			taskUserService.addTask(u4, 3L);
+			
+			
 			// fetch all tasks
 			log.info("Users found with findAll():");
 			log.info("-------------------------------");
-			for (ApplicationUser user : userRepository.findAll()) {
+			for (AppUser user : userRepository.findAll()) {
 				log.info(user.toString());
 			}
 			log.info("");

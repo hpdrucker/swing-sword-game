@@ -1,4 +1,4 @@
-package com.auth0.samples.authapi.springbootauthupdated.task;
+package ch.clip.samples.authapi.task;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.auth0.samples.authapi.springbootauthupdated.user.ApplicationUser;
+import ch.clip.samples.authapi.user.AppUser;
 
 @Entity
 public class Task {
@@ -19,7 +19,7 @@ public class Task {
     private String description;
     
     @OneToMany(mappedBy="task")
-	private List<ApplicationUser> projects = new ArrayList<ApplicationUser>();
+	private List<AppUser> projects = new ArrayList<AppUser>();
 
     protected Task() { }
 

@@ -1,4 +1,4 @@
-package com.auth0.samples.authapi.springbootauthupdated.task;
+package ch.clip.samples.authapi.task;
 
 import java.util.List;
 
