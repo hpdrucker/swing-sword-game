@@ -60,8 +60,31 @@ public class Character {
         this.name = name;
         this.hp = hp;
         this.damage = damage;
-        //this.users = users;
-        //this.abilities = abilities;
+        this.users = users;
+        this.abilities = abilities;
+    }
+
+    public Character(String name, int hp, int damage, List<AppUser> users, List<Ability> abilities, List<Item> items) {
+        this.name = name;
+        this.hp = hp;
+        this.damage = damage;
+        this.users = users;
+        this.abilities = abilities;
+        this.items = items;
+    }
+
+    public Character(String name, int hp, int damage) {
+        this.name = name;
+        this.hp = hp;
+        this.damage = damage;
+    }
+
+    public Character(String name, int hp, int damage, List<Ability> abilities, List<Item> items) {
+        this.name = name;
+        this.hp = hp;
+        this.damage = damage;
+        this.abilities = abilities;
+        this.items = items;
     }
 
     public Long getId() {
@@ -95,7 +118,7 @@ public class Character {
     public void setDamage(int damage) {
         this.damage = damage;
     }
-/*
+
     public List<AppUser> getUsers() {
         return users;
     }
@@ -112,5 +135,5 @@ public class Character {
         this.abilities = abilities;
     }
 
- */
+
 }

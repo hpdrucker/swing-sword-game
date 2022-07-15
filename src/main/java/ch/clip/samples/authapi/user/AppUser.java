@@ -42,7 +42,7 @@ public class AppUser {
         this.username = username;
         this.password = password;
     }
-    /*
+
     public Character getCharacter() {
         return character;
     }
@@ -50,7 +50,7 @@ public class AppUser {
     public void setCharacter(Character character) {
         this.character = character;
     }
-*/
+
     public Task getTask() {
         return task;
     }

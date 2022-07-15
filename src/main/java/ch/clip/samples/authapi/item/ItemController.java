@@ -1,5 +1,6 @@
 package ch.clip.samples.authapi.item;
 
+import ch.clip.samples.authapi.character.Character;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,8 +22,14 @@ public class ItemController {
         //itemRepository.addItem(item, id);
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public List<Item> getItems() {
         return itemRepository.findAll();
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteItem(@PathVariable long id) {
+        Item itemToDel = itemRepository.findById(id).get();
+        itemRepository.delete(itemToDel);
     }
 }

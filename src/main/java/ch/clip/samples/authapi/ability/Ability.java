@@ -28,7 +28,12 @@ public class Ability {
         this.id = id;
         this.name = name;
         this.effect = effect;
-       //& this.character = character;
+        this.chara = character;
+    }
+
+    public Ability(String name, String effect) {
+        this.name = name;
+        this.effect = effect;
     }
 
     public Long getId() {
@@ -54,13 +59,13 @@ public class Ability {
     public void setEffect(String effect) {
         this.effect = effect;
     }
-    /*
+
     public List<Character> getCharacters() {
-        return character;
+        return chara;
     }
 
     public void setCharacters(List<Character> characters) {
-        this.character = characters;
+        this.chara = characters;
     }
 
     @Override
@@ -72,5 +77,5 @@ public class Ability {
                 '}';
     }
 
-     */
+
 }

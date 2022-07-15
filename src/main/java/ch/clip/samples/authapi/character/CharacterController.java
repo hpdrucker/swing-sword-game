@@ -1,5 +1,6 @@
 package ch.clip.samples.authapi.character;
 
+import ch.clip.samples.authapi.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,18 +15,24 @@ public class CharacterController {
     private CharacterRepository characterRepository;
 
     public CharacterController(CharacterRepository characterRepository) {
-        //super();
+        super();
         this.characterRepository = characterRepository;
     }
 
-    @PostMapping("/{id}")
-    public void addCharacter(@RequestBody Character character, @PathVariable Long id) { // , @RequestBody Task task) {
+    @PostMapping
+    public void addCharacter(@RequestBody Character character) { // , @RequestBody Task task) {
         // service methode user, id -> Service taak getById user.setTask
-        //characterRepository.addCharacter(character, id);
+        characterRepository.save(character);
     }
 
     @GetMapping
     public List<Character> getCharacters() {
         return characterRepository.findAll();
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCharacter(@PathVariable long id) {
+        Character characterToDel = characterRepository.findById(id).get();
+        characterRepository.delete(characterToDel);
     }
 }
