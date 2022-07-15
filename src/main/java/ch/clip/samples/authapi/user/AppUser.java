@@ -22,6 +22,10 @@ public class AppUser {
     @JoinColumn(name = "task_id", referencedColumnName = "id")
     private Task task;
 
+    @ManyToOne
+    @JoinColumn(name = "character_id", referencedColumnName = "id")
+    private Character character;
+
     public AppUser() {
         super();
         // TODO Auto-generated constructor stub
@@ -33,6 +37,13 @@ public class AppUser {
         this.password = password;
     }
 
+    public Character getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(Character character) {
+        this.character = character;
+    }
 
     public Task getTask() {
         return task;
