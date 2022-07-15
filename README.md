@@ -9,8 +9,13 @@ the terminal.
 * Make sure you have Java 10 installed on your system. [Get it here](http://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html)
 * Clone the repository
 * Run `gradle bootrun` to build and run the project or run the project from your ide(make sure you build it before running)
+* Open localhost:80 and login
+* username: root
+* password: zli123
+* Database is db_swing_sword
 
 
 # How to Run the React Project
 * Go to the React Folder and type: npm install
 * Type npm start
+* opens localhost:3000
