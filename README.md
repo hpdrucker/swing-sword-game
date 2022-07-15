@@ -7,5 +7,10 @@ SpringBoot and secure it using Spring Security via JSON Web Tokens.
 you don't have an IDE don't worry you can still follow with a text editor and 
 the terminal.
 * Make sure you have Java 10 installed on your system. [Get it here](http://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html)
-* Clone the repository using the command `git clone https://github.com/vladimirfomene/springboot-auth-updated.git`
+* Clone the repository
 * Run `gradle bootrun` to build and run the project or run the project from your ide(make sure you build it before running)
+
+
+# How to Run the React Project
+* Go to the React Folder and type: npm install
+* Type npm start
