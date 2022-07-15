@@ -22,7 +22,7 @@ public class TaskUserServiceImpl implements TaskUserService {
 	public void addTask(AppUser user, Long taskId) {
 		// add the task to the user
 		Task task = taskRepository.getOne(taskId);
-		user.setTask(task);
+		//user.setTask(task);
 		appUserRepository.save(user);
 		
 	}

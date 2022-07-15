@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import ch.clip.samples.authapi.character.Character;
 
 import ch.clip.samples.authapi.task.Task;
 
@@ -18,13 +19,18 @@ public class AppUser {
     private String username;
     private String password;
 
+
     @ManyToOne
     @JoinColumn(name = "task_id", referencedColumnName = "id")
     private Task task;
+    /*
 
+     */
     @ManyToOne
-    @JoinColumn(name = "character_id", referencedColumnName = "id")
+    @JoinColumn(name = "chara_id", referencedColumnName = "id")
     private Character character;
+
+
 
     public AppUser() {
         super();
@@ -36,7 +42,7 @@ public class AppUser {
         this.username = username;
         this.password = password;
     }
-
+    /*
     public Character getCharacter() {
         return character;
     }
@@ -44,7 +50,7 @@ public class AppUser {
     public void setCharacter(Character character) {
         this.character = character;
     }
-
+*/
     public Task getTask() {
         return task;
     }
@@ -52,6 +58,8 @@ public class AppUser {
     public void setTask(Task task) {
         this.task = task;
     }
+
+
 
     public long getId() {
         return id;

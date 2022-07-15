@@ -1,17 +1,24 @@
-package Ability;
+package ch.clip.samples.authapi.item;
 
 import javax.persistence.*;
-
+import java.util.ArrayList;
+import java.util.List;
+import ch.clip.samples.authapi.character.Character;
 
 @Entity
-public class Ability {
+public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-   private String name;
+    private String name;
 
-   private String effect;
+    private int damage;
+
+    @ManyToMany(mappedBy = "items")
+    private List<Character> chara;
+
+
 
     public Long getId() {
         return id;
@@ -23,10 +30,10 @@ public class Ability {
 
     @Override
     public String toString() {
-        return "Ability{" +
+        return "Item{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", effect='" + effect + '\'' +
+                ", damage=" + damage +
                 '}';
     }
 }

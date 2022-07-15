@@ -1,5 +1,8 @@
 package ch.clip.samples.authapi;
 
+import ch.clip.samples.authapi.ability.AbilityRepository;
+import ch.clip.samples.authapi.item.ItemRepository;
+import ch.clip.samples.authapi.character.CharacterRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,27 +38,27 @@ public class SpringbootAuthUpdatedApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(TaskRepository repository, AppUserRepository userRepository) {
+	public CommandLineRunner demo(TaskRepository taskRepository, AppUserRepository userRepository, CharacterRepository characterRepository, AbilityRepository abilityRepository, ItemRepository itemRepository) {
 		return (args) -> {
 			// save a couple of tasks
 			Task t1 = new Task("Dinner with my Family");
 			Task t2 = new Task("movie Night with my Family");
 			Task t3 = new Task("Brunch with my Scholars");
 
-			repository.save(t1);
-			repository.save(t2);
-			repository.save(t3);
+			taskRepository.save(t1);
+			taskRepository.save(t2);
+			taskRepository.save(t3);
 
 			// fetch all tasks
 			log.info("Customers found with findAll():");
 			log.info("-------------------------------");
-			for (Task task : repository.findAll()) {
+			for (Task task : taskRepository.findAll()) {
 				log.info(task.toString());
 			}
 			log.info("");
 
 			// fetch an individual Task by ID
-			repository.findById(1L).ifPresent(task -> {
+			taskRepository.findById(1L).ifPresent(task -> {
 				log.info("Task found with findById(1L):");
 				log.info("--------------------------------");
 				log.info(task.toString());
@@ -79,7 +82,7 @@ public class SpringbootAuthUpdatedApplication {
 			userRepository.save(u3);
 
 			taskUserService.addTask(u4, 3L);
-			
+
 			
 			// fetch all tasks
 			log.info("Users found with findAll():");
@@ -90,7 +93,7 @@ public class SpringbootAuthUpdatedApplication {
 			log.info("");
 
 			// fetch an individual Task by ID
-			repository.findById(1L).ifPresent(user -> {
+			taskRepository.findById(1L).ifPresent(user -> {
 				log.info("User found with findById(1L):");
 				log.info("--------------------------------");
 				log.info(user.toString());
